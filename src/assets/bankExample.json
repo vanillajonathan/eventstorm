@@ -1,0 +1,146 @@
+[
+  {
+    "id": "19394c26-0f46-4f99-ad5c-3c449c970268",
+    "name": "Create Account",
+    "tilted": false,
+    "type": "command",
+    "x": 96,
+    "y": 112
+  },
+  {
+    "id": "de6f66ba-780a-4ae8-8dd7-f6a54fcfd515",
+    "name": "Accounts",
+    "tilted": false,
+    "type": "aggregate",
+    "x": 224,
+    "y": 112
+  },
+  {
+    "id": "84f29525-fd6d-456b-a7b0-d2d632a2f74e",
+    "name": "Account Created",
+    "tilted": false,
+    "type": "event",
+    "x": 352,
+    "y": 112
+  },
+  {
+    "id": "8fa80ea2-8836-4e74-afca-81bb7183b259",
+    "name": "Deposit Money",
+    "tilted": false,
+    "type": "command",
+    "x": 96,
+    "y": 272
+  },
+  {
+    "id": "6e382b48-d5c1-4048-8dbb-7ab5f3c0c1f9",
+    "name": "Money Desposited",
+    "tilted": false,
+    "type": "event",
+    "x": 224,
+    "y": 272
+  },
+  {
+    "id": "923bba58-8ff7-4f04-8775-205edd665d5d",
+    "name": "Withdraw Money",
+    "tilted": false,
+    "type": "command",
+    "x": 96,
+    "y": 384
+  },
+  {
+    "id": "bbd759bc-4382-4f1d-b626-f29f5351f27f",
+    "name": "Money Withdrawn",
+    "tilted": false,
+    "type": "event",
+    "x": 224,
+    "y": 384
+  },
+  {
+    "id": "ec48b8d0-b63d-4fe6-a078-0b29afb7165a",
+    "name": "Transfer Money",
+    "tilted": false,
+    "type": "command",
+    "x": 96,
+    "y": 496
+  },
+  {
+    "id": "84f8dfd6-1bb7-44ed-acd6-6ab61fe59887",
+    "name": "Money Transferred",
+    "tilted": false,
+    "type": "event",
+    "x": 224,
+    "y": 496
+  },
+  {
+    "id": "89c3aa20-076a-46b2-a485-4be97fbf44c9",
+    "name": "Customer",
+    "tilted": false,
+    "type": "actor",
+    "x": 0,
+    "y": 192
+  },
+  {
+    "id": "545de34e-0044-48f3-9b19-2949e0007d0e",
+    "name": "Create Invoice",
+    "tilted": false,
+    "type": "command",
+    "x": 96,
+    "y": 656
+  },
+  {
+    "id": "8cd1b7f9-1641-480f-bfec-847d71cbba42",
+    "name": "Invoices",
+    "tilted": false,
+    "type": "aggregate",
+    "x": 224,
+    "y": 656
+  },
+  {
+    "id": "3ea50fd4-c1a6-4f3f-9b67-6278eefcd6ee",
+    "name": "Invoice Created",
+    "tilted": false,
+    "type": "event",
+    "x": 352,
+    "y": 656
+  },
+  {
+    "id": "5e0f9077-9419-4072-a6e8-9724c870de8d",
+    "name": "B2C",
+    "tilted": false,
+    "type": "actor",
+    "x": 0,
+    "y": 736
+  },
+  {
+    "id": "8d654282-47b8-4efc-b779-e94c7cb0ca82",
+    "name": "Pay Invoice",
+    "tilted": false,
+    "type": "command",
+    "x": 96,
+    "y": 832
+  },
+  {
+    "id": "f61d5862-9305-4319-9c5c-5a12d427fdc4",
+    "name": "Invoices",
+    "tilted": false,
+    "type": "aggregate",
+    "x": 224,
+    "y": 832
+  },
+  {
+    "id": "3b7325af-5b7b-4c69-8954-14e0a118fbc3",
+    "name": "Invoice Paid",
+    "tilted": false,
+    "type": "event",
+    "x": 352,
+    "y": 832
+  },
+  {
+    "id": "d801b8ad-c498-4421-a8af-61c4b4558642",
+    "name": "C2B",
+    "tilted": false,
+    "type": "actor",
+    "x": 0,
+    "y": 912
+  }
+]

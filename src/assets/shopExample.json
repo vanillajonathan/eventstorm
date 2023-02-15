@@ -1,0 +1,72 @@
+[
+  {
+    "id": "522c7f10-e0b9-418b-9246-dabb0ce5d3c7",
+    "name": "Create Order",
+    "type": "command",
+    "x": 48,
+    "y": 112
+  },
+  {
+    "id": "ebd515a3-83c0-444d-9fe6-2b3af5c793b0",
+    "name": "Orders",
+    "type": "aggregate",
+    "x": 176,
+    "y": 112
+  },
+  {
+    "id": "a6acc617-011e-406f-b8fa-8c0b11df937a",
+    "name": "Order Created",
+    "type": "event",
+    "x": 304,
+    "y": 112
+  },
+  {
+    "id": "5d5e819a-d177-4738-a3f4-f6260e7be82a",
+    "name": "Customer",
+    "type": "actor",
+    "x": 0,
+    "y": 192
+  },
+  {
+    "id": "43d71bf8-89d0-404a-b517-410e82bc0a03",
+    "name": "Invoice Paid",
+    "type": "event",
+    "x": 560,
+    "y": 320
+  },
+  {
+    "id": "19e51f07-44b3-4d0d-9745-e348e5969efb",
+    "name": "Invoice Overdue",
+    "type": "event",
+    "x": 560,
+    "y": 432
+  },
+  {
+    "id": "10e15247-64f6-4fe9-85d7-c5403da4bda2",
+    "name": "Order Shipped",
+    "type": "event",
+    "x": 432,
+    "y": 112
+  },
+  {
+    "id": "22f058ca-b60b-4176-bb72-ed41ae6e7433",
+    "name": "Order Delivered",
+    "type": "event",
+    "x": 624,
+    "y": 0
+  },
+  {
+    "id": "2e09d861-785a-49d0-9267-335608e5ecfd",
+    "name": "Shipping Company",
+    "type": "external",
+    "x": 496,
+    "y": 0
+  },
+  {
+    "id": "9039551c-50e4-44cc-8ae9-e83ed2f4bc59",
+    "name": "Payment Provider",
+    "type": "external",
+    "x": 432,
+    "y": 320
+  }
+]

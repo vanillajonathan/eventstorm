@@ -1,0 +1,39 @@
+[
+  {
+    "id": "522c7f10-e0b9-418b-9246-dabb0ce5d3c7",
+    "name": "Create Order",
+    "type": "command",
+    "x": 48,
+    "y": 48
+  },
+  {
+    "id": "ebd515a3-83c0-444d-9fe6-2b3af5c793b0",
+    "name": "Orders",
+    "type": "aggregate",
+    "x": 176,
+    "y": 48
+  },
+  {
+    "id": "a6acc617-011e-406f-b8fa-8c0b11df937a",
+    "name": "Order Created",
+    "type": "event",
+    "x": 304,
+    "y": 48
+  },
+  {
+    "id": "ef3dc552-c525-492a-84e4-b4d23ea14154",
+    "name": "Payment Provider",
+    "tilted": false,
+    "type": "external",
+    "x": 432,
+    "y": 160
+  },
+  {
+    "id": "f195345c-ab70-485e-8b4c-443f31a78427",
+    "name": "Subscription Activated",
+    "tilted": false,
+    "type": "event",
+    "x": 560,
+    "y": 160
+  }
+]
