@@ -214,9 +214,9 @@ function onMouseUp(): void {
 }
 
 function onMouseMove(e: MouseEvent | TouchEvent): void {
-  if (e.buttons === 1 && e.ctrlKey) {
-    panX.value = (e as MouseEvent).offsetX - dragOffsetX.value
-    panY.value = (e as MouseEvent).offsetY - dragOffsetY.value
+  if (e.type === 'mousemove' && (e as MouseEvent).buttons === 1 && e.ctrlKey) {
+    panX.value = (e as MouseEvent).offsetX - dragOffsetX.value!
+    panY.value = (e as MouseEvent).offsetY - dragOffsetY.value!
     return
   }
   if (activeNode) {
@@ -393,44 +393,43 @@ function zoomOut(): void {
   <svg style="width: 100%" class="p-2 h-100 user-select-none" @mouseup="activeNode = null" ref="svgEl"
     @mousemove="e => onMouseMove(e)"
     @touchmove="e => onMouseMove(e)">
-    <g :transform="`translate(${panX} ${panY})`">
-      <svg
-        :class="'node node-' + node.type"
-        :data-id="node.id"
-        :data-type="node.type"
-        :data-name="node.name"
-        :style="cursor"
-        width="120"
-        :height="node.type === NodeType.Actor ? 50 : 100"
-        :x="node.x"
-        :y="node.y"
-        :transform="`scale(${zoom}) rotate(${node.tilted ? -10 : 0})`"
-        v-show="showNode(node)"
-        v-for="node in nodes"
-        :key="node.id"
-        @contextmenu="e => onContextMenu(e, node)"
-        @dblclick="e => onDoubleClick(e, node)"
-        @mousedown="e => onMouseDown(e, node)"
-        @mouseup="onMouseUp"
-        @touchstart="e => onMouseDown(e, node)"
-        @touchend="activeNode = null"
-        @touchleave="activeNode = null"
-        @touchcancel="activeNode = null">
-        <rect
-          :fill="getColor(node)"
+    <g :transform="`scale(${zoom}) translate(${panX} ${panY})`">
+      <g v-for="node in nodes" :transform="`rotate(${node.tilted ? -10 : 0})`">
+        <svg
+          :class="'node node-' + node.type"
+          :data-id="node.id"
+          :data-type="node.type"
+          :data-name="node.name"
+          :style="cursor"
           width="120"
           :height="node.type === NodeType.Actor ? 50 : 100"
-          rx="3"
-          stroke="black"
-          stroke-width="2" />
-        <!--<text :x="60" :y="node.type === NodeType.Actor ? 30 : 50" text-anchor="middle">{{node.name}}</text>-->
-        <!--<text :y="node.type === NodeType.Actor ? 30 : 50 - ((node.name.split(' ').length * 19) / 2) - 9">
-          <tspan v-for="(word, index) in node.name.split(' ')" :dy="19" x="60" text-anchor="middle">{{word}}</tspan>
-        </text>-->
-        <text v-for="(word, index) in node.name.split(' ')" :key="index" x="60" :y="node.type === NodeType.Actor ? 30 : 50 - (node.name.split(' ').length * 7) + (index * 23)" text-anchor="middle">
-          {{word}}
-        </text>
-      </svg>
+          :x="node.x"
+          :y="node.y"
+          :key="node.id"
+          @contextmenu="e => onContextMenu(e, node)"
+          @dblclick="e => onDoubleClick(e, node)"
+          @mousedown="e => onMouseDown(e, node)"
+          @mouseup="onMouseUp"
+          @touchstart="e => onMouseDown(e, node)"
+          @touchend="activeNode = null"
+          @touchleave="activeNode = null"
+          @touchcancel="activeNode = null">
+          <rect
+            :fill="getColor(node)"
+            width="120"
+            :height="node.type === NodeType.Actor ? 50 : 100"
+            rx="3"
+            stroke="black"
+            stroke-width="2" />
+          <!--<text :x="60" :y="node.type === NodeType.Actor ? 30 : 50" text-anchor="middle">{{node.name}}</text>-->
+          <!--<text :y="node.type === NodeType.Actor ? 30 : 50 - ((node.name.split(' ').length * 19) / 2) - 9">
+            <tspan v-for="(word, index) in node.name.split(' ')" :dy="19" x="60" text-anchor="middle">{{word}}</tspan>
+          </text>-->
+          <text v-for="(word, index) in node.name.split(' ')" :key="index" x="60" :y="node.type === NodeType.Actor ? 30 : 50 - (node.name.split(' ').length * 7) + (index * 23)" text-anchor="middle">
+            {{word}}
+          </text>
+        </svg>
+      </g>
     </g>
   </svg>
   
