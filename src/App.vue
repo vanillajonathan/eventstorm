@@ -3,7 +3,8 @@
 // Add legend
 // Smaller size for user
 // Views = Read models
-import { ref, computed, onBeforeUpdate, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import * as bootstrap from "bootstrap"
 import CreateNodeDialog from './components/CreateNodeDialog.vue'
 import ContextDialog from './components/ContextDialog.vue'
 import RenameNodeDialog from './components/RenameNodeDialog.vue'
@@ -54,31 +55,8 @@ let activeNode: Node | null = null
 let links: { source: string, target: string }[] = []
 links.push({source: "Foo", target: "Cat"})
 
-let nodeLinks: Link[] = []
-
 const theme = localStorage.getItem("theme") ?? "dark" 
 document.documentElement.dataset.bsTheme = theme
-
-// interface Cluster {
-//   nodes: Node[],
-//   links: Link[],
-// }
-
-interface Link {
-  source: Node,
-  target: Node,
-}
-
-// interface ClusterStats {
-//   actors: number,
-//   aggregates: number,
-//   businessProcesses: number,
-//   commands: number,
-//   errors: number,
-//   events: number,
-//   externals: number,
-//   views: number,
-// }
 
 onMounted(() => {
   if (window.location.hash !== "") {
@@ -109,15 +87,6 @@ onMounted(() => {
       }
     }
   });
-});
-
-onBeforeUpdate(() => {
-  nodeLinks = links.map(x => (
-    {
-      source: nodes.value.find(n => n.name === x.source),
-      target: nodes.value.find(n => n.name === x.target)
-    } as Link
-  ))
 });
 
 const cursor = computed(() => {
@@ -184,7 +153,7 @@ function onContextMenu(e: MouseEvent, node: Node): void {
   }, 0)
 }
 
-function onDoubleClick(e: MouseEvent, node: Node): void {
+function onDoubleClick(_e: MouseEvent, node: Node): void {
   contextualNode.value = node
   setTimeout(() => {
     const modal = new bootstrap.Modal('#renameNodeModal')
@@ -394,7 +363,7 @@ function zoomOut(): void {
     @mousemove="e => onMouseMove(e)"
     @touchmove="e => onMouseMove(e)">
     <g :transform="`scale(${zoom}) translate(${panX} ${panY})`">
-      <g v-for="node in nodes" :transform="`rotate(${node.tilted ? -10 : 0})`">
+      <g v-for="node in nodes" v-show="showNode(node)" :transform="`rotate(${node.tilted ? -10 : 0})`">
         <svg
           :class="'node node-' + node.type"
           :data-id="node.id"
