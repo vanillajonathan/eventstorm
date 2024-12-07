@@ -15,24 +15,7 @@ import bankExample from './assets/bankExample.json'
 import serviceExample from './assets/serviceExample.json'
 import shopExample from './assets/shopExample.json'
 
-const nodes = ref<Node[]>([
-  {
-    id: crypto.randomUUID(),
-    name: "Foo",
-    tilted: false,
-    type: "aggregate",
-    x: 100,
-    y: 100,
-  } as Node,
-  {
-    id: crypto.randomUUID(),
-    name: "Cat",
-    tilted: false,
-    type: "command",
-    x: 200,
-    y: 200,
-  } as Node
-])
+const nodes = ref<Node[]>([])
 const contextualNode = ref<Node | null>(null)
 const dragOffsetX = ref<number | null>(null)
 const dragOffsetY = ref<number | null>(null)
