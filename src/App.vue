@@ -7,6 +7,7 @@ import { ref, computed, onMounted } from 'vue'
 import * as bootstrap from "bootstrap"
 import CreateNodeDialog from './components/CreateNodeDialog.vue'
 import ContextDialog from './components/ContextDialog.vue'
+import KeyboardShortcutsDialog from './components/KeyboardShortcutsDialog.vue'
 import RenameNodeDialog from './components/RenameNodeDialog.vue'
 import { downloadImage, downloadJSON, downloadSVGImage } from './download'
 import type { Node } from './shared'
@@ -56,6 +57,9 @@ onMounted(() => {
       if (zoom.value > 0) {
         zoom.value -= 0.10;
       }
+    }
+    else if (e.ctrlKey && e.code === 'Digit0') {
+      zoom.value = 1;
     }
   });
 
@@ -329,6 +333,7 @@ function zoomOut(): void {
                 <li><button type="button" class="dropdown-item" @click="download">Export as PNG</button></li>
                 <li><button type="button" class="dropdown-item" @click="downloadSVGImage(svgEl!)">Export as SVG</button></li>
                 <li><hr class="dropdown-divider"></li>
+                <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#keyboardShortcutsModal">Keyboard Shortcuts</button></li>
                 <li><button type="button" class="dropdown-item" @click="share">Share</button></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><h6 class="dropdown-header">Examples</h6></li>
@@ -393,6 +398,7 @@ function zoomOut(): void {
     @tilt="(node) => node.tilted = !node.tilted"
     />
   <CreateNodeDialog id="createNodeModal" @add-event="(name, type) => addNode(name, type)" :type="nodeType" />
+  <KeyboardShortcutsDialog />
   <RenameNodeDialog id="renameNodeModal"
     v-if="contextualNode"
     :node="contextualNode"
