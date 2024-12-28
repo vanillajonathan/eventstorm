@@ -10,6 +10,7 @@ import CreateNodeDialog from './components/CreateNodeDialog.vue'
 import ContextDialog from './components/ContextDialog.vue'
 import KeyboardShortcutsDialog from './components/KeyboardShortcutsDialog.vue'
 import RenameNodeDialog from './components/RenameNodeDialog.vue'
+import ShareDialog from './components/ShareDialog.vue'
 import { downloadImage, downloadJSON, downloadSVGImage } from './download'
 import type { Node } from './shared'
 import { NodeType } from './shared'
@@ -24,6 +25,7 @@ const dragOffsetY = ref<number | null>(null)
 const filePickerEl = ref<HTMLInputElement | null>(null)
 const panX = ref<number>(0)
 const panY = ref<number>(0)
+const shareUrl = ref<string>()
 const showActors = ref<boolean>(true)
 const showAggregates = ref<boolean>(true)
 const showBusinessProcesses = ref<boolean>(true)
@@ -77,13 +79,7 @@ onMounted(() => {
   });
 });
 
-const cursor = computed(() => {
-  return `cursor: ${dragOffsetX.value ? 'grabbing' : 'grab'}`
-})
-
-function share() {
-  console.log(btoa(JSON.stringify(nodes.value)))
-}
+const cursor = computed(() => `cursor: ${dragOffsetX.value ? 'grabbing' : 'grab'}`)
 
 function addNode(name: string, type: NodeType): void {
   nodes.value.push({id: crypto.randomUUID(), name, tilted: false, type, x: 50, y: 50})
@@ -199,6 +195,14 @@ function onMouseMove(e: MouseEvent | TouchEvent): void {
       node!.y = 0;
     }
   }
+}
+
+function share() {
+  shareUrl.value = location + '#' + btoa(JSON.stringify(nodes.value))
+  setTimeout(() => {
+    const modal = new bootstrap.Modal('#shareModal')
+    modal.show()
+  }, 0)
 }
 
 function showNode(node: Node): boolean {
@@ -402,6 +406,7 @@ function zoomOut(): void {
     />
   <CreateNodeDialog id="createNodeModal" @add-event="(name, type) => addNode(name, type)" :type="nodeType" />
   <KeyboardShortcutsDialog />
+  <ShareDialog :url="shareUrl" />
   <RenameNodeDialog id="renameNodeModal"
     v-if="contextualNode"
     :node="contextualNode"
