@@ -5,6 +5,7 @@
 // Views = Read models
 import { ref, computed, onMounted } from 'vue'
 import * as bootstrap from "bootstrap"
+import AboutDialog from './components/AboutDialog.vue'
 import CreateNodeDialog from './components/CreateNodeDialog.vue'
 import ContextDialog from './components/ContextDialog.vue'
 import KeyboardShortcutsDialog from './components/KeyboardShortcutsDialog.vue'
@@ -333,8 +334,9 @@ function zoomOut(): void {
                 <li><button type="button" class="dropdown-item" @click="download">Export as PNG</button></li>
                 <li><button type="button" class="dropdown-item" @click="downloadSVGImage(svgEl!)">Export as SVG</button></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#keyboardShortcutsModal">Keyboard Shortcuts</button></li>
                 <li><button type="button" class="dropdown-item" @click="share">Share</button></li>
+                <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#keyboardShortcutsModal">Keyboard Shortcuts</button></li>
+                <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#aboutModal">About Event Storm</button></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><h6 class="dropdown-header">Examples</h6></li>
                 <li><button type="button" class="dropdown-item" @click="nodes = bankExample as Node[]">Bank</button></li>
@@ -390,6 +392,7 @@ function zoomOut(): void {
     </g>
   </svg>
   
+  <AboutDialog />
   <ContextDialog id="contextModal"
     v-if="contextualNode"
     :node="(contextualNode as Node)"
