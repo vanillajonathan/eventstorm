@@ -70,7 +70,7 @@ type Suggestions = {
 }
 
 const suggestions = {
-  actor: ["Admin", "Bot", "Customer", "Developer", "Guest", "Manager", "Moderator", "User"],
+  actor: ["Admin", "Analyst", "Bot", "Customer", "Developer", "Guest", "Manager", "Moderator", "Supplier", "User"],
   aggregate: ["Accounts", "Inventory", "Orders", "Shopping Cart", "Users"],
   command: ["Book Room", "Book Venue", "Cancel Subscription", "Create Account", "Delete Account"],
   event: ["Account Created", "Account Deleted", "Account Verified", "End of month", "End of quarter", "End of year", "Invoice Paid", "Order Delivered", "Order Shipped", "Subscription Cancelled", "Room Booked", "Venue Booked"],
